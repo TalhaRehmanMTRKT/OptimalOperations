@@ -22,9 +22,10 @@ main(int, char**)
     int Pbmax = 200; //battery maximum capacity
     int chgmax = 100; //battery maximum charging rate
     int dischgmax = 100; //battery maximum discharging rate
-    
+   
     float chgeffin = 0.95; //battery effciency
     float dischgeffin = 0.95; //battery effciency
+
 #pragma endregion
 
 
@@ -85,7 +86,7 @@ main(int, char**)
 #pragma region Results
     IloCplex cplex(env);
     cplex.extract(model);
-    cplex.setOut(env.getNullStream());
+    //cplex.setOut(env.getNullStream());
     if (!cplex.solve()) {
         env.error() << "Failed" << endl;
         throw(-1);

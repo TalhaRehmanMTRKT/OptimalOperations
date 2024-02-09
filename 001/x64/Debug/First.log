@@ -1,0 +1,4 @@
+﻿  Source.cpp
+C:\Users\talha\Desktop\Blogs\OptimalOperations\001\Source.cpp(26,18): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\talha\Desktop\Blogs\OptimalOperations\001\Source.cpp(27,23): warning C4305: 'initializing': truncation from 'double' to 'float'
+  First.vcxproj -> C:\Users\talha\Desktop\Blogs\OptimalOperations\001\x64\Debug\SingleMG.exe
