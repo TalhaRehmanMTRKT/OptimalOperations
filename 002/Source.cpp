@@ -134,7 +134,6 @@ main(int, char**)
                 model.add(Pchg[i][t] <= (1 - SOC[i][t - 1]) * capBatt[i] / chargeEff);
 				model.add(Pdch[i][t] <= SOC[i][t - 1] * capBatt[i] * dischargeEff);
 			}
-            model.add(Pdch[i][t] <= SOC[i][t - 1] * capBatt[i] * dischargeEff);
 
         }
     } 
@@ -146,6 +145,14 @@ main(int, char**)
 	IloCplex cplex(model);
 	cplex.solve();
 	std::cout << "Objective Function Value: " << cplex.getObjValue() << std::endl;
+
+    cout<< "Power output of diesel generator at time [0][0]: " << cplex.getValue(Pdg[0][0]) << endl;
+
+
+    for (int t = 0; t < T; t++)
+    {
+        cout << "Power output of diesel generator in MG 0 at time " << t << " : " << cplex.getValue(Pdg[0][t]) << endl;
+    }
 
 #pragma endregion
 

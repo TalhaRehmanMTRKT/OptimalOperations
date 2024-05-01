@@ -1,0 +1,27 @@
+reset;
+options solver HiGHS;
+# Original Problem 
+reset;
+var x1 >=0;
+var x2 >=0;
+var x3 >=0;
+var x4 >=0;
+minimize w: 15*x1 + 12*x2 + 0*x3 + 0*x4;
+subject to
+c1: 1*x1 + 2*x2 - 1*x3 + 0*x4 = 3;
+c2: 2*x1 - 4*x2 + 0*x3 + 1*x4 = 5;
+
+solve;
+display w,x1,x2,x3,x4;
+reset;
+
+# Dual Problem 
+var y1 >=0;
+var y2 <=0;
+maximize z: 3*y1 + 5*y2;
+subject to
+c1: 1*y1 + 2*y2 <= 15;
+c2: 2*y1 - 4*y2 <= 12;
+solve;
+display z,y1,y2;
+reset;
