@@ -1,46 +1,24 @@
-#include <ilcplex/ilocplex.h>
-
-ILOSTLBEGIN
+#include <iostream>
+#include <typeinfo> // for typeid
 
 int main() {
-    IloEnv env;
-    try {
-        // Create an instance of the CPLEX environment
-        IloModel model(env);
+    int num = 10;
+    double pi = 3.14;
+    char letter = 'A';
+    bool isTrue = true;
+    float value = 2.5;
 
-        // Create decision variables
-        IloNumVar x1(env, 0, IloInfinity, ILOFLOAT);
-        IloNumVar x2(env, 0, IloInfinity, ILOFLOAT);
+    
 
-        //objective function
 
-        model.add(IloMaximize(env, 5 * x1 + 4 * x2));
+    std::cout << "Type of num: " << typeid(num).name() << std::endl;
+    std::cout << "Type of pi: " << typeid(pi).name() << std::endl;
+    std::cout << "Type of letter: " << typeid(letter).name() << std::endl;
+    std::cout << "Type of isTrue: " << typeid(isTrue).name() << std::endl;
+    std::cout << "Type of value: " << typeid(value).name() << std::endl;
 
-        // Add constraints
-        model.add(6 * x1 + 4 * x2 <= 24);
-        model.add(x1 + 2 * x2 <= 6);
-        model.add(-x1 + x2 <= 1);
-        model.add(x2 <= 2);
-        model.add(x2 >= 0);
-        model.add(x1 >= 0);
+    std::cout << "Type of value: " << typeid(value * pi).name() << std::endl;
 
-        // Create a CPLEX solver instance
-        IloCplex cplex(model);
-
-        // Solve the model
-        cplex.solve();
-
-        // Print the solution
-        cout << "Objective Value: " << cplex.getObjValue() << endl;
-        cout << "Solution:" << endl;
-        cout << "x1 = " << cplex.getValue(x1) << endl;
-        cout << "x2 = " << cplex.getValue(x2) << endl;
-
-    }
-    catch (IloException& e) {
-        cerr << "Error: " << e << endl;
-    }
-    env.end();
 
     return 0;
 }

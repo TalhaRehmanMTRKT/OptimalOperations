@@ -15,26 +15,23 @@ main(int, char**)
 
 #pragma region Microgrid Input Data
     int T = 24; //One day
-
     int* Pload = new int[T] {169, 175, 179, 171, 181, 172, 270, 264, 273, 281, 193, 158, 161, 162, 250, 260, 267, 271, 284, 167, 128, 134, 144, 150};  //Electicity demand w.r.t tim
     int* CGbuy = new int[T] { 90, 90, 90, 90, 90, 90, 110, 110, 110, 110, 110, 125, 125, 125, 125, 125, 125, 125, 110, 110, 110, 110, 110, 110 };  //buying price from grid w.r.t time
-
     int Pbmax = 200; //battery maximum capacity
     int chgmax = 100; //battery maximum charging rate
     int dischgmax = 100; //battery maximum discharging rate
-   
     float chgeffin = 0.95; //battery effciency
     float dischgeffin = 0.95; //battery effciency
-
 #pragma endregion
 
 
 #pragma region Decision Variables
     IloNumVarArray PGbuy(env, T, 0, IloInfinity);//Grid power bought
-    IloNumVarArray PGsell(env, T, 0, IloInfinity);//Grid power sold
     IloNumVarArray statoc(env, T, 0, 1); //battery storage capacity
     IloNumVarArray Bchg(env, T, 0, IloInfinity); //battery charging
     IloNumVarArray Bdischg(env, T, 0, IloInfinity); //battery discharging
+
+    //IloNumVarArray PGsell(env, T, 0, IloInfinity);//Grid power sold
 #pragma endregion
 
 
