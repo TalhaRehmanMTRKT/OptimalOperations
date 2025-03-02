@@ -1,0 +1,9 @@
+battery_cap 100.0
+battery_chg_max 50.0
+battery_dch_max 50.0
+battery_eff 0.95
+battery_soc_min 0
+battery_soc_max 1
+dg_max 150.0
+dg_min 50.0
+dg_cost 80.0

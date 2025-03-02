@@ -20,9 +20,9 @@ main(int, char**)
 #pragma region Input Data
     int T = 24; // Number of time intervals
     
-    int numMgs = 3; // Number of microgrids increased to 3
+    //int numMgs = 3; // Number of microgrids increased to 3
 
-    //int numMgs = 2; // Number of microgrids
+    int numMgs = 2; // Number of microgrids
 
     float chargeEff = 0.95; // Charging efficiency
     float dischargeEff = 0.95; // Discharging efficiency
@@ -34,9 +34,9 @@ main(int, char**)
     int dgMin = 50; // Minimum power output of diesel generator
     int dgMax = 150; // Maximum power output of diesel generator
 
-    //int* capBatt = new int[numMgs] { 100, 100 }; // Capacity of battery in each microgrid for 2 microgrid
+    int* capBatt = new int[numMgs] { 100, 100 }; // Capacity of battery in each microgrid for 2 microgrid
 
-    int* capBatt = new int[numMgs] { 100, 100, 100}; // Capacity of battery in each microgrid for 3 microgrid
+    //int* capBatt = new int[numMgs] { 100, 100, 100}; // Capacity of battery in each microgrid for 3 microgrid
 
 
     double* Cbuy = new double[T] { 90, 90, 90, 90, 90, 90, 110, 110, 110, 110, 110, 125, 125, 125, 125, 125, 125, 125, 110, 110, 110, 110, 110, 110 }; // Cost of buying electricity
@@ -48,19 +48,16 @@ main(int, char**)
     load[1] = new double[T] {130, 125, 120, 120, 125, 135, 150, 160, 175, 190, 195, 200, 195, 195, 180, 170, 185, 190, 195, 200, 195, 190, 180, 175};
 
 
-    // ADDED LINE
-    load[2] = new double[T] {130, 125, 120, 120, 125, 135, 150, 160, 175, 190, 195, 200, 195, 195, 180, 170, 185, 190, 195, 200, 195, 190, 180, 175};
-
-
-
+    //// ADDED LINE
+    //load[2] = new double[T] {130, 125, 120, 120, 125, 135, 150, 160, 175, 190, 195, 200, 195, 195, 180, 170, 185, 190, 195, 200, 195, 190, 180, 175};
 
     double** Pwt = new double* [numMgs]; // Wind turbine power generation
     Pwt[0] = new double[T] {10, 15, 20, 23, 28, 33, 35, 34, 70, 80, 90, 100, 100, 100, 100, 40, 50, 60, 70, 80, 90, 100, 100, 100};
     Pwt[1] = new double[T] { 70, 80, 90, 100, 100, 35, 34, 70, 80, 90, 100, 100, 100, 100, 40, 50, 60, 70, 80, 90, 100, 100, 100};
 
 
-    // ADDED LINE
-    Pwt[2] = new double[T] { 70, 80, 90, 100, 100, 35, 34, 70, 80, 90, 100, 100, 100, 100, 40, 50, 60, 70, 80, 90, 100, 100, 100};
+    //// ADDED LINE
+    //Pwt[2] = new double[T] { 70, 80, 90, 100, 100, 35, 34, 70, 80, 90, 100, 100, 100, 100, 40, 50, 60, 70, 80, 90, 100, 100, 100};
 
 
 #pragma endregion
